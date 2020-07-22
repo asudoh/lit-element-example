@@ -8,3 +8,4 @@
  */
 
 import './my-awesome-component';
+import './my-awesome-component-with-counter';
