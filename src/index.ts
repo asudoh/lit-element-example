@@ -9,3 +9,4 @@
 
 import './my-awesome-component';
 import './my-awesome-component-with-counter';
+import './my-awesome-hybrid-rendered-component';
