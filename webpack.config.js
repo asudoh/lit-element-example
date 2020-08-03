@@ -34,6 +34,37 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.scss$/,
+        sideEffects: true,
+        use: [
+          require.resolve('./tools/css-result-loader'),
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('./tools/postcss-fix-host-pseudo')(),
+                require('autoprefixer')({
+                  browsers: ['last 1 version', 'ie >= 11'],
+                }),
+              ],
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'fast-sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'node_modules')],
+              data: `
+                $feature-flags: (
+                  enable-css-custom-properties: true,
+                );
+              `,
+              sourceMap: true,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
