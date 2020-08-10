@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "lib": ["es2017", "esnext.array", "dom", "dom.iterable"],
     "typeRoots": ["node_modules/@types"],
+    "allowJs": true,
     "declaration": true,
     "sourceMap": true,
     "noUnusedLocals": true,
@@ -20,7 +21,8 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.js",
+    "src/**/*.ts",
   ],
   "exclude": []
 }
