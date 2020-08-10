@@ -2,8 +2,10 @@ import { html, property, customElement, LitElement } from 'lit-element';
 
 @customElement('my-awesome-composite')
 class MyAwesomeComposite extends LitElement {
+  private _loadLanguage?: () => Promise<string>;
+
   @property({ attribute: false })
-  errorRequestLanguage;
+  errorRequestLanguage?: Error;
 
   @property()
   requestLanguageInProgress = false;
