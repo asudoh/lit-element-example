@@ -20,6 +20,23 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-modules'],
+              plugins: [
+                '@babel/plugin-proposal-class-properties',
+                ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+                '@babel/plugin-proposal-nullish-coalescing-operator',
+                '@babel/plugin-proposal-optional-chaining',
+              ],
+            },
+          },
+        ],
+      },
+      {
         test: /\.ts$/,
         use: [
           {
@@ -29,6 +46,8 @@ module.exports = {
               plugins: [
                 '@babel/plugin-proposal-class-properties',
                 ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+                '@babel/plugin-proposal-nullish-coalescing-operator',
+                '@babel/plugin-proposal-optional-chaining',
               ],
             },
           },
