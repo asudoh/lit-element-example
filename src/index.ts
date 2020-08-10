@@ -7,5 +7,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import './my-awesome-component';
-import './my-awesome-component-with-counter';
+import './my-awesome-container';
