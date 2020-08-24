@@ -1,8 +1,28 @@
 import { html, css, property, customElement, LitElement } from 'lit-element';
+import HostListener from 'carbon-web-components/es/globals/decorators/host-listener';
+import HostListenerMixin from 'carbon-web-components/es/globals/mixins/host-listener';
 
 @customElement('my-awesome-component')
-class MyAwesomeComponent extends LitElement {
-  _handleClickButton(event: MouseEvent) {
+class MyAwesomeComponent extends HostListenerMixin(LitElement) {
+  @HostListener('document:eventFoo')
+  // @ts-ignore
+  private _handleFoo(event: CustomEvent) {
+    console.log('Host event:', event);
+  }
+
+  @HostListener('parentRoot:click')
+  // @ts-ignore
+  private _handleClickParentRoot(event: MouseEvent) {
+    console.log('Host root event:', event);
+  }
+
+  @HostListener('click')
+  // @ts-ignore
+  private _handleClickHost(event: MouseEvent) {
+    console.log('Host event:', event);
+  }
+
+  private _handleClickButton(event: MouseEvent) {
     console.log('Event:', event);
   }
 
@@ -23,6 +43,10 @@ class MyAwesomeComponent extends LitElement {
       !
       <slot></slot>
     `;
+  }
+
+  static get eventFoo() {
+    return 'my-awesome-component-foo';
   }
 
   static styles = css`
